@@ -5,7 +5,7 @@ import 'package:cats_api_test/enum/http_types.dart';
 
 class HttpService {
   // Constructor
-  static final String link = "http://research.solardigital.com.ua/api/v1/";
+  static final String link = "https://api.thecatapi.com/v1/";
 
   HttpService._privateConstructor();
 

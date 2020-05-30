@@ -12,4 +12,18 @@ class ApiService {
   static ApiService get instance => _instance;
 
   HttpService _httpService = HttpService.instance;
+
+  /// Receives response with json containing cats
+  Future<http.Response> receivePageOfCats({int page}) async {
+    return await _httpService.request(
+      HttpType.GET,
+      url: _httpService.buildUrl(
+        path: "images/search",
+        params: {
+          "page": page,
+          "limit": 50,
+        },
+      ),
+    );
+  }
 }

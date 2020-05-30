@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cats_api_test/util/cat_string_key.dart';
 
 class Cat {
@@ -16,8 +14,6 @@ class Cat {
     this.width,
     this.height,
   });
-
-  factory Cat.fromRawJson(String str) => Cat.fromJson(json.decode(str));
 
   factory Cat.fromJson(Map<String, dynamic> json) {
     return Cat(
