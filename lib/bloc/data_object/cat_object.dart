@@ -28,4 +28,6 @@ class Cat {
       height: json[CatStringKey.heightKey] ?? 0,
     );
   }
+
+  String toString() => 'Cat { id: $id }';
 }
