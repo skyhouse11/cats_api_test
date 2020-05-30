@@ -8,14 +8,20 @@ class CatObjectLoaded extends CatObjectState {
   const CatObjectLoaded({
     this.cats,
     this.hasReachedMax,
-  });
+  }) : super();
 
-  CatObjectLoaded copyWith({List<Cat> cats, bool hasReachedMax}) {
+  CatObjectLoaded copyWith({
+    List<Cat> cats,
+    bool hasReachedMax,
+  }) {
     return CatObjectLoaded(
       cats: cats ?? this.cats,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
     );
   }
+
+  @override
+  List<Object> get props => [cats, hasReachedMax];
 
   @override
   String toString() =>

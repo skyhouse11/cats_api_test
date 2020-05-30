@@ -51,12 +51,14 @@ class CatObjectBloc extends Bloc<CatObjectEvent, CatObjectState> {
           return;
         } else if (currentState is CatObjectLoaded) {
           final List<Cat> cats = await _fetchPosts(page: ++_currentPage);
+          print((currentState.cats + cats).length);
           yield cats.isEmpty
               ? currentState.copyWith(hasReachedMax: true)
               : CatObjectLoaded(
                   cats: currentState.cats + cats,
                   hasReachedMax: false,
                 );
+          return;
         }
       } catch (_) {
         yield CatObjectError();
@@ -69,9 +71,9 @@ class CatObjectBloc extends Bloc<CatObjectEvent, CatObjectState> {
         await ApiService.instance.receivePageOfCats(page: page);
 
     if (response.statusCode == 200) {
-      final data = json.decode(response.body) as List<Map<String, dynamic>>;
+      final List<dynamic> data = json.decode(response.body);
 
-      return data.map((Map<String, dynamic> json) {
+      return data.map((json) {
         return Cat.fromJson(json);
       }).toList();
     } else {

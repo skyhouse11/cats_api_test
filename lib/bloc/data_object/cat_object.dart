@@ -17,11 +17,11 @@ class Cat {
 
   factory Cat.fromJson(Map<String, dynamic> json) {
     return Cat(
-      breeds: json[CatStringKey.breedsKey] ?? [],
-      id: json[CatStringKey.idKey] ?? "",
-      url: json[CatStringKey.urlKey] ?? "",
-      width: json[CatStringKey.widthKey] ?? 0,
-      height: json[CatStringKey.heightKey] ?? 0,
+      breeds: List<Map<String, dynamic>>.from(json[CatStringKey.breedsKey]) ?? [],
+      id:                                     json[CatStringKey.idKey]      ?? "",
+      url:                                    json[CatStringKey.urlKey]     ?? "",
+      width:                                  json[CatStringKey.widthKey]   ?? 0,
+      height:                                 json[CatStringKey.heightKey]  ?? 0,
     );
   }
 

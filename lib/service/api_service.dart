@@ -13,15 +13,22 @@ class ApiService {
 
   HttpService _httpService = HttpService.instance;
 
+  static const String _apiKey = "1fe24f18-98d5-427d-bf0c-875148d7e205";
+
   /// Receives response with json containing cats
   Future<http.Response> receivePageOfCats({int page}) async {
     return await _httpService.request(
       HttpType.GET,
+      headers: {
+        "x-api-key": _apiKey,
+      },
       url: _httpService.buildUrl(
         path: "images/search",
         params: {
           "page": page,
           "limit": 50,
+          "mime_types": "png",
+          "size": "small",
         },
       ),
     );
